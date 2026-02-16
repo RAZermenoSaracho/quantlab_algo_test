@@ -1,6 +1,7 @@
 prices = []
 
 def generate_signal(candle):
+    # RAZS TEST
     global prices
 
     close_price = candle["close"]
