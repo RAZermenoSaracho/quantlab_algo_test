@@ -4,7 +4,7 @@ def generate_signal(ctx):
     # RAZS TEST 4
     global prices
 
-    close_price = candle["close"]
+    close_price = 0 #candle["close"]
     prices.append(close_price)
 
     # Wait until we have enough data
