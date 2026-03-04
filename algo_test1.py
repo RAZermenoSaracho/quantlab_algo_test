@@ -1,6 +1,6 @@
 prices = []
 
-def generate_signal(candle):
+def generate_signal(ctx):
     # RAZS TEST 4
     global prices
 
