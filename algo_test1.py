@@ -1,17 +1,17 @@
 prices = []
 
 def generate_signal(ctx):
-    # RAZS TEST 4
     global prices
 
-    close_price = 0 #candle["close"]
+    candle = ctx["candle"]
+    close_price = candle["close"]
+
     prices.append(close_price)
 
     # Wait until we have enough data
     if len(prices) < 5:
         return "HOLD"
 
-    # Simple moving average
     sma = sum(prices[-5:]) / 5
 
     if close_price > sma:
