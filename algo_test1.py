@@ -1,22 +1,19 @@
-prices = []
-
 def generate_signal(ctx):
-    global prices
 
-    candle = ctx["candle"]
-    close_price = candle["close"]
+    history = ctx["history"]
 
-    prices.append(close_price)
-
-    # Wait until we have enough data
-    if len(prices) < 5:
+    if len(history) < 5:
         return "HOLD"
 
-    sma = sum(prices[-5:]) / 5
+    closes = [c["close"] for c in history]
+    close_price = ctx["candle"]["close"]
+
+    sma = sum(closes[-5:]) / 5
 
     if close_price > sma:
         return "BUY"
-    elif close_price < sma:
+
+    if close_price < sma:
         return "SELL"
-    else:
-        return "HOLD"
+
+    return "HOLD"
